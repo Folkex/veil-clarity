@@ -83,6 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@veilo" },
+      { property: "og:title", content: "Veilo Blog — Privacy, Encryption & Digital Safety" },
+      { name: "twitter:title", content: "Veilo Blog — Privacy, Encryption & Digital Safety" },
+      { name: "description", content: "Veilo Insights is a blog offering guides on digital privacy, app features, and tech news." },
+      { property: "og:description", content: "Veilo Insights is a blog offering guides on digital privacy, app features, and tech news." },
+      { name: "twitter:description", content: "Veilo Insights is a blog offering guides on digital privacy, app features, and tech news." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/33ecdc19-3bd0-4138-b176-d48e30dd6f8c/id-preview-ef9201fc--b8f8c23e-3bca-4b3e-a813-9b96518173ea.lovable.app-1780936964774.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/33ecdc19-3bd0-4138-b176-d48e30dd6f8c/id-preview-ef9201fc--b8f8c23e-3bca-4b3e-a813-9b96518173ea.lovable.app-1780936964774.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
