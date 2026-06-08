@@ -1,74 +1,45 @@
 import { Link } from "@tanstack/react-router";
-import { CATEGORIES, categorySlug, SITE } from "@/content/posts";
+import { Shield } from "lucide-react";
+
+const FOOTER_LINKS = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Refund", href: "/refund" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function SiteFooter() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="mt-24 border-t border-border bg-[image:var(--gradient-subtle)]">
-      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 sm:grid-cols-2 md:grid-cols-4">
-        <div className="sm:col-span-2 md:col-span-1">
-          <span className="text-lg font-semibold tracking-tight">{SITE.brand}</span>
-          <p className="mt-3 max-w-xs text-sm text-muted-foreground">{SITE.tagline}</p>
-        </div>
+    <footer className="mt-24 border-t border-border bg-card/30">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+              <Shield className="h-4 w-4" />
+            </span>
+            <span className="font-semibold tracking-tight">Veilo</span>
+            <span className="text-sm text-muted-foreground">© {year}</span>
+          </div>
 
-        <div>
-          <h3 className="text-sm font-semibold">Topics</h3>
-          <ul className="mt-3 space-y-2">
-            {CATEGORIES.map((c) => (
-              <li key={c}>
-                <Link
-                  to="/category/$category"
-                  params={{ category: categorySlug(c) }}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {c}
-                </Link>
-              </li>
+          <nav className="flex items-center gap-6">
+            {FOOTER_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
             ))}
-          </ul>
+          </nav>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold">Veilo</h3>
-          <ul className="mt-3 space-y-2">
-            <li>
-              <a href={SITE.mainSite} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Main site
-              </a>
-            </li>
-            <li>
-              <a href={`${SITE.mainSite}/#download`} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Download
-              </a>
-            </li>
-            <li>
-              <a href={`${SITE.mainSite}/#pricing`} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Pricing
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold">Subscribe</h3>
-          <ul className="mt-3 space-y-2">
-            <li>
-              <a href="/rss.xml" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                RSS feed
-              </a>
-            </li>
-            <li>
-              <a href="/sitemap.xml" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                Sitemap
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-border">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Veilo. Privacy-first by design.</p>
-          <p>End-to-end encrypted. iOS &amp; Android.</p>
+        <div className="mt-8 flex justify-center">
+          <span className="inline-flex items-center rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground">
+            Made with ❤ in Lebanon
+          </span>
         </div>
       </div>
     </footer>
