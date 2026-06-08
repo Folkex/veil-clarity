@@ -104,7 +104,7 @@ function PostPage() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[image:var(--gradient-primary)] text-sm font-semibold text-primary-foreground">
             {post.author
               .split(" ")
-              .map((n) => n[0])
+              .map((n: string) => n[0])
               .slice(0, 2)
               .join("")}
           </span>
@@ -124,7 +124,7 @@ function PostPage() {
 
       {post.tags.length > 0 && (
         <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
-          {post.tags.map((tag) => (
+          {post.tags.map((tag: string) => (
             <span
               key={tag}
               className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
