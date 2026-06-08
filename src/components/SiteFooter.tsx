@@ -1,11 +1,12 @@
-import { Link } from "@tanstack/react-router";
 import { Shield } from "lucide-react";
 
+const MAIN = "https://veilo.link";
+
 const FOOTER_LINKS = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Refund", href: "/refund" },
-  { label: "Contact", href: "/contact" },
+  { label: "Privacy", href: `${MAIN}/privacy` },
+  { label: "Terms", href: `${MAIN}/terms` },
+  { label: "Refund", href: `${MAIN}/refund` },
+  { label: "Contact", href: `${MAIN}/contact` },
 ];
 
 export function SiteFooter() {
@@ -25,13 +26,13 @@ export function SiteFooter() {
 
           <nav className="flex items-center gap-6">
             {FOOTER_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={link.href}
+                href={link.href}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>
