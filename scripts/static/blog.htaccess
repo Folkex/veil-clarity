@@ -1,0 +1,38 @@
+# Veilo blog — static hosting on Apache/cPanel
+Options -MultiViews
+DirectoryIndex index.html
+
+# Correct MIME types for the feeds
+AddType application/rss+xml .xml
+<Files "rss.xml">
+  ForceType application/rss+xml
+</Files>
+<Files "sitemap.xml">
+  ForceType application/xml
+</Files>
+
+# Long cache for fingerprinted assets
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|png|jpg|jpeg|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Clean URL routing: serve prerendered folder/index.html, fall back to 404
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Existing files/dirs are served as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # /slug -> /slug/index.html
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+?)/?$ $1/index.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html
