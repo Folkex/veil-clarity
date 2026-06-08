@@ -5,6 +5,7 @@ import {
   getPostsByCategory,
   SITE,
   type Category,
+  type Post,
 } from "@/content/posts";
 import { PostCard } from "@/components/PostCard";
 
@@ -70,7 +71,7 @@ function CategoryPage() {
       </nav>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+        {posts.map((post: Post) => (
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
