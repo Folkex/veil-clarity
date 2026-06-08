@@ -4,6 +4,7 @@ import {
   categorySlug,
   getPost,
   getRelatedPosts,
+  type Post,
   SITE,
 } from "@/content/posts";
 import { formatDate, renderMarkdown } from "@/lib/markdown";
@@ -154,7 +155,7 @@ function PostPage() {
         <section className="mt-16">
           <h2 className="mb-6 text-xl font-semibold tracking-tight">Keep reading</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((p) => (
+            {related.map((p: Post) => (
               <PostCard key={p.slug} post={p} />
             ))}
           </div>
